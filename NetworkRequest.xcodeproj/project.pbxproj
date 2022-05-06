@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		D515800827F9F3DF009E7727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515800727F9F3DF009E7727 /* AppDelegate.swift */; };
 		D515800A27F9F3DF009E7727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515800927F9F3DF009E7727 /* SceneDelegate.swift */; };
-		D515800C27F9F3DF009E7727 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515800B27F9F3DF009E7727 /* ViewController.swift */; };
 		D515800F27F9F3DF009E7727 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D515800D27F9F3DF009E7727 /* Main.storyboard */; };
 		D515801127F9F3E6009E7727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D515801027F9F3E6009E7727 /* Assets.xcassets */; };
 		D515801427F9F3E6009E7727 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D515801227F9F3E6009E7727 /* LaunchScreen.storyboard */; };
+		D578676B27FC8D780074963F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D578676A27FC8D780074963F /* NetworkManager.swift */; };
+		D585D5452801C56F0026E544 /* Cryptocurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D5442801C56F0026E544 /* Cryptocurrency.swift */; };
+		D585D54D2801D6350026E544 /* CryptocurrencyRatesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D54C2801D6350026E544 /* CryptocurrencyRatesTVC.swift */; };
+		D585D5502801D7F20026E544 /* RatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D54F2801D7F20026E544 /* RatesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D515800427F9F3DF009E7727 /* NetworkRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D515800727F9F3DF009E7727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D515800927F9F3DF009E7727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D515800B27F9F3DF009E7727 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D515800E27F9F3DF009E7727 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D515801027F9F3E6009E7727 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D515801327F9F3E6009E7727 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D515801527F9F3E6009E7727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D578676A27FC8D780074963F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D585D5442801C56F0026E544 /* Cryptocurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cryptocurrency.swift; path = NetworkRequest/StoryBoards/Cryptocurrency.swift; sourceTree = SOURCE_ROOT; };
+		D585D54C2801D6350026E544 /* CryptocurrencyRatesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyRatesTVC.swift; sourceTree = "<group>"; };
+		D585D54F2801D7F20026E544 /* RatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,66 @@
 		D515800627F9F3DF009E7727 /* NetworkRequest */ = {
 			isa = PBXGroup;
 			children = (
-				D515800727F9F3DF009E7727 /* AppDelegate.swift */,
-				D515800927F9F3DF009E7727 /* SceneDelegate.swift */,
-				D515800B27F9F3DF009E7727 /* ViewController.swift */,
-				D515800D27F9F3DF009E7727 /* Main.storyboard */,
-				D515801027F9F3E6009E7727 /* Assets.xcassets */,
-				D515801227F9F3E6009E7727 /* LaunchScreen.storyboard */,
-				D515801527F9F3E6009E7727 /* Info.plist */,
+				D515801E27F9F4BC009E7727 /* StoryBoards */,
+				D515802527F9F5B3009E7727 /* ViewControllers */,
+				D578676E27FC8DD50074963F /* Model */,
+				D515802027F9F538009E7727 /* Services */,
+				D515801F27F9F50A009E7727 /* Resources */,
+				D515801C27F9F44C009E7727 /* App */,
 			);
 			path = NetworkRequest;
+			sourceTree = "<group>";
+		};
+		D515801C27F9F44C009E7727 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D515800727F9F3DF009E7727 /* AppDelegate.swift */,
+				D515800927F9F3DF009E7727 /* SceneDelegate.swift */,
+				D515801527F9F3E6009E7727 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D515801E27F9F4BC009E7727 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				D515800D27F9F3DF009E7727 /* Main.storyboard */,
+				D515801227F9F3E6009E7727 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		D515801F27F9F50A009E7727 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D515801027F9F3E6009E7727 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D515802027F9F538009E7727 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D578676A27FC8D780074963F /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D515802527F9F5B3009E7727 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D585D54C2801D6350026E544 /* CryptocurrencyRatesTVC.swift */,
+				D585D54F2801D7F20026E544 /* RatesTableViewCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D578676E27FC8DD50074963F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D585D5442801C56F0026E544 /* Cryptocurrency.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D515800C27F9F3DF009E7727 /* ViewController.swift in Sources */,
+				D578676B27FC8D780074963F /* NetworkManager.swift in Sources */,
+				D585D5502801D7F20026E544 /* RatesTableViewCell.swift in Sources */,
+				D585D5452801C56F0026E544 /* Cryptocurrency.swift in Sources */,
 				D515800827F9F3DF009E7727 /* AppDelegate.swift in Sources */,
+				D585D54D2801D6350026E544 /* CryptocurrencyRatesTVC.swift in Sources */,
 				D515800A27F9F3DF009E7727 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = NetworkRequest/Info.plist;
+				INFOPLIST_FILE = NetworkRequest/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,7 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = NetworkRequest/Info.plist;
+				INFOPLIST_FILE = NetworkRequest/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
