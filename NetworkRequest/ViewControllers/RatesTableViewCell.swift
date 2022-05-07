@@ -15,8 +15,8 @@ class RatesTableViewCell: UITableViewCell {
     
     func configure(with cryptocurrency: Cryptocurrency) {
         symbolLabel.text = cryptocurrency.symbol
-        openPriceLabel.text = "\(cryptocurrency.openPrice ?? 0)"
-        lowPriceLabel.text = "\(cryptocurrency.lowPrice ?? 0)"
-        highPriceLabel.text = "\(cryptocurrency.highPrice ?? 0)"
+        openPriceLabel.text = cryptocurrency.openPrice
+        lowPriceLabel.text = cryptocurrency.lowPrice
+        highPriceLabel.text = cryptocurrency.highPrice
     }
 }

@@ -15,7 +15,7 @@ class CryptocurrencyRatesTVC: UITableViewController {
         
         title = "Cryptocurrency"
         
-        tableView.reloadData()
+        fetchCryptocurrency()
     }
 
     // MARK: - Table view data source
@@ -30,9 +30,6 @@ class CryptocurrencyRatesTVC: UITableViewController {
         cell.configure(with: cryptocurrency)
         return cell
     }
-    
-
-
 }
 
 // MARK: - Networking
@@ -48,7 +45,11 @@ extension CryptocurrencyRatesTVC {
             }
             
             do {
-                self.cryptocurrencies = try JSONDecoder().decode([Cryptocurrency].self, from: data)
+                let cryptocurrencies = try JSONDecoder().decode([Cryptocurrency].self, from: data)
+                DispatchQueue.main.async {
+                    self.cryptocurrencies = cryptocurrencies
+                    self.tableView.reloadData()
+                }
             } catch let error {
                 print(error.localizedDescription)
             }

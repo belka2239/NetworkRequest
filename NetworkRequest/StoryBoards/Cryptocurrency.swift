@@ -11,7 +11,7 @@
 
 struct Cryptocurrency: Decodable {
     let symbol: String?
-    let openPrice: Float?
-    let lowPrice: Float?
-    let highPrice: Float?
+    let openPrice: String?
+    let lowPrice: String?
+    let highPrice: String?
 }
