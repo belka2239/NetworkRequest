@@ -28,6 +28,9 @@ class CryptocurrencyRatesTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RatesTableViewCell
         let cryptocurrency = cryptocurrencies[indexPath.row]
         cell.configure(with: cryptocurrency)
+        
+        cell.lowPriceLabel.textColor = #colorLiteral(red: 0.1137254902, green: 0.7294117647, blue: 0.1490196078, alpha: 1)
+        cell.highPriceLabel.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         return cell
     }
 }
