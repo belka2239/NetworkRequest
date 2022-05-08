@@ -74,7 +74,13 @@
                             <outlet property="delegate" destination="VgQ-Zb-kMb" id="w4H-kT-hci"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Crypt" id="5An-V1-lhf"/>
+                    <navigationItem key="navigationItem" title="Crypt" id="5An-V1-lhf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="J57-rZ-taN">
+                            <connections>
+                                <action selector="restartButton:" destination="VgQ-Zb-kMb" id="DsK-M1-tCw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46p-Pe-1bD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

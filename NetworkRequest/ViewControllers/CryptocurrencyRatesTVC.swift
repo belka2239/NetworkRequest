@@ -10,19 +10,21 @@ import UIKit
 class CryptocurrencyRatesTVC: UITableViewController {
     
     private var cryptocurrencies: [Cryptocurrency] = []
+    private var spinnerView: UIActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Cryptocurrency"
+        spinnerView = showSpinner(in: tableView)
+        sendRequest()
         
-        fetchCryptocurrency()
+        title = "Cryptocurrency"
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cryptocurrencies.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RatesTableViewCell
@@ -33,30 +35,31 @@ class CryptocurrencyRatesTVC: UITableViewController {
         cell.highPriceLabel.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         return cell
     }
-}
-
-// MARK: - Networking
-extension CryptocurrencyRatesTVC {
-    private  func fetchCryptocurrency() {
-        let jsonURL = "https://api.wazirx.com/sapi/v1/tickers/24hr"
-        guard let url = URL(string: jsonURL) else { return }
+    
+    @IBAction func restartButton(_ sender: UIBarButtonItem) {
+        sendRequest()
+        spinnerView?.startAnimating()
+    }
+    
+    private func sendRequest() {
+        NetworkManager.shared.fetchCryptocurrency { (cryptocurrencies) in
+            DispatchQueue.main.async {
+                self.spinnerView?.stopAnimating()
+                self.cryptocurrencies = cryptocurrencies
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func showSpinner(in view: UITableView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let cryptocurrencies = try JSONDecoder().decode([Cryptocurrency].self, from: data)
-                DispatchQueue.main.async {
-                    self.cryptocurrencies = cryptocurrencies
-                    self.tableView.reloadData()
-                }
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }.resume()
+        view.addSubview(activityIndicator)
+        
+        return activityIndicator
     }
 }
-
