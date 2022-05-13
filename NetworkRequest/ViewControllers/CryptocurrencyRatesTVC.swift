@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CryptocurrencyRatesTVC: UITableViewController {
     
@@ -16,7 +17,8 @@ class CryptocurrencyRatesTVC: UITableViewController {
         super.viewDidLoad()
         
         spinnerView = showSpinner(in: tableView)
-        sendRequest()
+//        sendRequest()
+        alamofireGetRequest()
         
         title = "Cryptocurrency"
     }
@@ -37,16 +39,29 @@ class CryptocurrencyRatesTVC: UITableViewController {
     }
     
     @IBAction func restartButton(_ sender: UIBarButtonItem) {
-        sendRequest()
+//        sendRequest()
+        alamofireGetRequest()
         spinnerView?.startAnimating()
     }
     
-    private func sendRequest() {
-        NetworkManager.shared.fetchCryptocurrency { (cryptocurrencies) in
-            DispatchQueue.main.async {
-                self.spinnerView?.stopAnimating()
+//    private func sendRequest() {
+//        NetworkManager.shared.fetchCryptocurrency { (cryptocurrencies) in
+//            DispatchQueue.main.async {
+//                self.spinnerView?.stopAnimating()
+//                self.cryptocurrencies = cryptocurrencies
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
+    
+    func alamofireGetRequest() {
+        NetworkManager.shared.fetchDataWithAlamofire("https://api.wazirx.com/sapi/v1/tickers/24hr") { (result) in
+            switch result {
+            case .success(let cryptocurrencies):
                 self.cryptocurrencies = cryptocurrencies
                 self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
             }
         }
     }
